@@ -452,7 +452,7 @@ ul { list-style: none; }
   display: block;
   /* Crop the Spline scene's empty top void so bricks touch the very top
      edge behind the transparent nav. Cover-style fill. */
-  transform: scale(2) translateY(22%);
+  transform: scale(1.22) translateY(4%);
   transform-origin: center center;
 }
 .hero__3d {
@@ -2366,13 +2366,13 @@ h1, h2, h3, h4, h5, h6,
    the top of the viewport on phones */
 @media (max-width: 900px) {
   .hero__spline spline-viewer {
-    transform: scale(2.3) translateY(24%) !important;
+    transform: scale(1.3) translateY(6%) !important;
   }
   .hero__fallback { background: hsl(var(--hero-bg)); }
 }
 @media (max-width: 560px) {
   .hero__spline spline-viewer {
-    transform: scale(2.6) translateY(26%) !important;
+    transform: scale(1.4) translateY(8%) !important;
   }
 }
 
