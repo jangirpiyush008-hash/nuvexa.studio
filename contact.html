@@ -50,6 +50,30 @@
             <label>Name<input type="text" name="name" placeholder="Full name" required></label>
             <label>Email<input type="email" name="email" placeholder="you@company.com" required pattern="^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" title="Enter a real email like you@company.com"></label>
           </div>
+          <label>Phone
+            <div class="form__phone">
+              <select name="country_code" class="form__cc" aria-label="Country code">
+                <option value="+91" selected>🇮🇳 +91</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+81">🇯🇵 +81</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+7">🇷🇺 +7</option>
+                <option value="+55">🇧🇷 +55</option>
+                <option value="+27">🇿🇦 +27</option>
+                <option value="+234">🇳🇬 +234</option>
+                <option value="+92">🇵🇰 +92</option>
+                <option value="+880">🇧🇩 +880</option>
+                <option value="+94">🇱🇰 +94</option>
+              </select>
+              <input type="tel" name="phone" class="form__phone-input" placeholder="98765 43210" required pattern="[0-9\s\-]{6,15}" title="Enter a valid phone number">
+            </div>
+          </label>
           <label>Company <span class="form__optional">optional</span><input type="text" name="company" placeholder="Company / brand"></label>
           <label>What do you need?
             <select name="need" id="needSelect">
@@ -62,15 +86,21 @@
               <option value="else">Something else</option>
             </select>
           </label>
-          <label>Budget range
-            <select name="budget">
-              <option>&lt; ₹2L</option>
-              <option>₹2L — ₹5L</option>
-              <option>₹5L — ₹15L</option>
-              <option>₹15L+</option>
-              <option>Not sure yet</option>
-            </select>
-          </label>
+          <div class="form__row">
+            <label>Budget range
+              <select name="budget" required>
+                <option value="">Pick a range</option>
+                <option>&lt; ₹2L</option>
+                <option>₹2L — ₹5L</option>
+                <option>₹5L — ₹15L</option>
+                <option>₹15L+</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>Exact budget <span class="form__optional">optional, in ₹</span>
+              <input type="text" name="budget_exact" placeholder="e.g. 3,50,000" inputmode="numeric" pattern="[0-9,\s]*">
+            </label>
+          </div>
           <label>Brief <span class="form__optional">1–2 paragraphs is plenty</span>
             <textarea name="brief" rows="5" placeholder="What's the goal? What's already in place? What's the deadline?" required></textarea>
           </label>
@@ -188,12 +218,16 @@
       const params = new URLSearchParams(window.location.search);
       const needs = params.get('needs');
 
+      const phoneRaw = (fd.get('phone') || '').toString().replace(/[^0-9]/g, '');
+      const cc = fd.get('country_code') || '+91';
       const payload = {
         name: fd.get('name'),
         email: fd.get('email'),
+        phone: phoneRaw ? `${cc} ${phoneRaw}` : null,
         company: fd.get('company') || null,
         need: fd.get('need'),
         budget: fd.get('budget'),
+        budget_exact: (fd.get('budget_exact') || '').toString().trim() || null,
         brief: fd.get('brief'),
         picker_needs: needs || null,
         page: 'contact',
