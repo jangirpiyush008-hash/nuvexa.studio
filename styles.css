@@ -1859,14 +1859,110 @@ ul { list-style: none; }
 .contact__card--accent { background: hsl(var(--primary)); border-color: hsl(var(--primary)); }
 .contact__big {
   display: block; color: hsl(var(--foreground));
-  font-size: 22px; font-weight: 500; margin: 12px 0 6px;
-  text-decoration: none;
+  font-size: clamp(15px, 1.6vw, 20px); font-weight: 500; margin: 12px 0 6px;
+  text-decoration: none; word-break: break-all; line-height: 1.3;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
-.contact__big:hover { color: hsl(var(--primary)); }
+.contact__big:hover {
+  color: hsl(var(--primary));
+  text-shadow: 0 0 12px hsla(119 99% 46% / 0.35);
+}
 .contact__link { color: hsl(var(--muted-foreground)); text-decoration: none; font-size: 14px; }
 .contact__social { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-direction: column; gap: 8px; }
 .contact__social a { color: hsl(var(--foreground)); text-decoration: none; }
 .contact__social a:hover { color: hsl(var(--primary)); }
+
+/* Global heading highlight — soft glow on .accent spans + subtle text-shadow on big titles */
+.page-header__title,
+.work__title,
+.footer__huge,
+.hero__title,
+.needs__title,
+.academy__title {
+  text-shadow: 0 1px 24px hsla(0 0% 0% / 0.55);
+}
+.accent {
+  position: relative;
+  color: hsl(var(--primary));
+  text-shadow: 0 0 22px hsla(119 99% 46% / 0.35), 0 0 60px hsla(119 99% 46% / 0.18);
+}
+.page-header__title .accent::after,
+.work__title .accent::after,
+.footer__huge .accent::after,
+.hero__title .accent::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0.06em;
+  height: 0.08em;
+  background: linear-gradient(90deg, transparent, hsla(119 99% 46% / 0.55), transparent);
+  border-radius: 999px;
+  opacity: 0.8;
+  animation: accentShimmer 3.2s ease-in-out infinite;
+}
+@keyframes accentShimmer {
+  0%, 100% { opacity: 0.4; transform: scaleX(0.85); }
+  50% { opacity: 0.9; transform: scaleX(1.05); }
+}
+
+/* Origin story */
+.origin {
+  display: grid; grid-template-columns: 1.1fr 1.4fr; gap: 80px;
+  padding: 40px 0 20px; align-items: flex-start;
+}
+@media (max-width: 900px) { .origin { grid-template-columns: 1fr; gap: 36px; } }
+.origin__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 600; letter-spacing: -0.035em;
+  line-height: 1.02; margin-top: 18px;
+}
+.origin__body p {
+  color: hsl(var(--muted-foreground));
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.55; margin-bottom: 18px; max-width: 56ch;
+}
+.origin__pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.origin__pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px; border-radius: 999px;
+  background: hsla(0 0% 100% / 0.03);
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.02em;
+}
+.origin__pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 10px hsla(119 99% 46% / 0.6);
+}
+
+/* Manifesto marquee */
+.manifesto {
+  overflow: hidden;
+  border-top: 1px solid hsl(var(--border));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 28px 0; margin: 40px 0;
+  background: hsla(0 0% 100% / 0.015);
+}
+.manifesto__track {
+  display: flex; align-items: center; gap: 36px;
+  white-space: nowrap; font-family: 'Sora', sans-serif;
+  font-size: clamp(20px, 2.4vw, 36px); font-weight: 600;
+  letter-spacing: -0.02em;
+  animation: manifestoScroll 28s linear infinite;
+  will-change: transform;
+}
+.manifesto__track span { color: hsl(var(--foreground)); }
+.manifesto__sep {
+  color: hsl(var(--primary)) !important;
+  font-size: 0.6em; opacity: 0.7;
+  text-shadow: 0 0 14px hsla(119 99% 46% / 0.55);
+}
+@keyframes manifestoScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 /* New-studio promise */
 .new-promise { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; margin-top: 56px; align-items: flex-start; }
