@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Nuvexa</title>
+  <meta name="description" content="Tell us what you need. 24-hour reply, fixed-scope proposals, or an honest no." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1A1A'/><rect x='11' y='11' width='10' height='10' rx='2' fill='%2322F000'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="progress"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__brand"><span class="nav__brand-mark"></span>NUVEXA</a>
+    <div class="nav__center">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contacts</a>
+    </div>
+    <div class="nav__right">
+      <a href="courses.html" class="nav__academy">Academy</a>
+      <a href="contact.html" class="nav__cta">Get Quote</a>
+      <div class="nav__burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contacts</a><a href="courses.html">Academy →</a>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__kicker animate-fade-up">Contact</span>
+      <h1 class="page-header__title animate-fade-up" style="animation-delay: 0.15s;">Tell us the <span class="accent">brief.</span></h1>
+      <p class="page-header__sub animate-fade-up" style="animation-delay: 0.3s;">Reply within 24 hours with a scoped plan — or an honest no. No discovery calls until we know your goal.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact__grid">
+        <form class="form r-up" id="briefForm" onsubmit="return submitBrief(event)">
+          <div class="form__row">
+            <label>Name<input type="text" name="name" placeholder="Full name" required></label>
+            <label>Email<input type="email" name="email" placeholder="you@company.com" required></label>
+          </div>
+          <label>Company <span class="form__optional">optional</span><input type="text" name="company" placeholder="Company / brand"></label>
+          <label>What do you need?
+            <select name="need" id="needSelect">
+              <option value="web">A new website</option>
+              <option value="app">iOS / Android app</option>
+              <option value="ads">Creative &amp; ad system</option>
+              <option value="automation">Automate Everything (Excel, office, data, anything)</option>
+              <option value="full">Full marketing system</option>
+              <option value="course">AI Academy</option>
+              <option value="else">Something else</option>
+            </select>
+          </label>
+          <label>Budget range
+            <select name="budget">
+              <option>&lt; ₹2L</option>
+              <option>₹2L — ₹5L</option>
+              <option>₹5L — ₹15L</option>
+              <option>₹15L+</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label>Brief <span class="form__optional">1–2 paragraphs is plenty</span>
+            <textarea name="brief" rows="5" placeholder="What's the goal? What's already in place? What's the deadline?" required></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">
+            Send brief
+            <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form__note">By sending you agree to our friendly non-spam policy. We reply within 24 hours, weekdays.</p>
+        </form>
+
+        <aside class="contact__aside r-up">
+          <div class="contact__card">
+            <p class="eyebrow">Direct</p>
+            <a href="mailto:hello@nuvexa.studio" class="contact__big">hello@nuvexa.studio</a>
+            <a href="tel:+919999999999" class="contact__link">+91 99999 99999</a>
+          </div>
+          <div class="contact__card">
+            <p class="eyebrow">Studio</p>
+            <p>Gurgaon, India<br/>Working worldwide, remote-first.</p>
+          </div>
+          <div class="contact__card">
+            <p class="eyebrow">Social</p>
+            <ul class="contact__social">
+              <li><a href="#">Instagram →</a></li>
+              <li><a href="#">LinkedIn →</a></li>
+              <li><a href="#">Dribbble →</a></li>
+              <li><a href="#">X / Twitter →</a></li>
+            </ul>
+          </div>
+          <div class="contact__card contact__card--accent">
+            <p class="eyebrow" style="color: hsl(0 0% 4%);">Promise</p>
+            <p style="color: hsl(0 0% 4%); font-weight: 500;">We say <strong>yes</strong> to 100% of good briefs. If we can't, we'll introduce you to someone who can — same day.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__huge">Talk <span class="accent">soon.</span></div>
+      <div class="footer__grid">
+        <div><a href="index.html" class="nav__brand"><span class="nav__brand-mark"></span>NUVEXA</a><p class="footer__about">A motion-first studio building sites, apps, creative and automation for ambitious brands.</p></div>
+        <div class="footer__col"><h4>Studio</h4><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer__col"><h4>Services</h4><ul><li><a href="services.html">Web</a></li><li><a href="services.html">Apps</a></li><li><a href="services.html">Creative</a></li><li><a href="services.html">Automate Everything</a></li><li><a href="courses.html">Academy</a></li></ul></div>
+        <div class="footer__col"><h4>Connect</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Dribbble</a></li><li><a href="#">X</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><span>© <span data-year></span> NUVEXA · Threebros Media Pvt Ltd</span><span>Gurgaon → Worldwide</span></div>
+    </div>
+  </footer>
+
+  <script>
+    // Prefill from ?needs= query string (from homepage picker)
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const needs = params.get('needs');
+      if (!needs) return;
+      const first = needs.split(',')[0];
+      const sel = document.getElementById('needSelect');
+      if (sel && [...sel.options].some(o => o.value === first)) sel.value = first;
+      const ta = document.querySelector('textarea[name="brief"]');
+      if (ta && needs) ta.value = `From picker: ${needs.replace(/,/g, ', ')}\n\n`;
+    })();
+    function submitBrief(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.textContent = 'Sent — we\'ll reply within 24 hours';
+      btn.classList.add('active');
+      return false;
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);</script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

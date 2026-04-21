@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuvexa — We build brands correctly</title>
+  <meta name="description" content="Websites, apps, ad creatives and AI cohorts. Engineered with motion, shipped with precision." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1A1A'/><rect x='11' y='11' width='10' height='10' rx='2' fill='%2322F000'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="progress"></div>
+
+  <div class="preloader">
+    <div class="preloader__inner">
+      <span>N</span><span>U</span><span>V</span><span>E</span><span>X</span><span>A</span>
+    </div>
+    <div class="preloader__dot" style="margin-left:14px"></div>
+  </div>
+
+  <!-- ───── NAV ───── -->
+  <nav class="nav">
+    <a href="index.html" class="nav__brand"><span class="nav__brand-mark"></span>NUVEXA</a>
+    <div class="nav__center">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contacts</a>
+    </div>
+    <div class="nav__right">
+      <a href="courses.html" class="nav__academy">Academy</a>
+      <a href="contact.html" class="nav__cta">Get Quote</a>
+      <div class="nav__burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contacts</a>
+    <a href="courses.html">Academy →</a>
+  </div>
+
+  <!-- ───── HERO ───── -->
+  <section class="hero">
+    <div class="hero__spline" id="heroSpline">
+      <div class="hero__fallback"></div>
+      <spline-viewer
+        class="hero__3d"
+        loading-anim-type="none"
+        url="https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode"
+      ></spline-viewer>
+    </div>
+    <div class="hero__dark-overlay"></div>
+
+    <div class="hero__content">
+      <h1 class="hero__title animate-fade-up" style="animation-delay: 0.2s;">
+        NUVEXA<br/><span class="accent">STUDIO</span>
+      </h1>
+      <p class="hero__sub animate-fade-up" style="animation-delay: 0.4s;">
+        No past stories.<br/>Let's build <span class="accent">yours.</span>
+      </p>
+      <p class="hero__desc animate-fade-up" style="animation-delay: 0.55s;">
+        Websites that convert. iOS &amp; Android apps that ship. Creative designs that stop the scroll. And we'll <strong>automate everything</strong> boring in your workflow — Excel, office tasks, data, anything you throw at us.
+      </p>
+      <div class="hero__actions animate-fade-up" style="animation-delay: 0.7s;">
+        <a href="contact.html" class="btn btn--primary btn--hero">
+          Book a Call
+          <svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#services" class="btn btn--white btn--hero">
+          See Services
+        </a>
+      </div>
+      <p class="hero__trust animate-fade-up" style="animation-delay: 0.85s;">
+        <span class="hero__trust-dot"></span>
+        New studio · Gurgaon · Building the first cohort of brands right now
+      </p>
+    </div>
+
+    <div class="hero__scroll-hint animate-fade-in" style="animation-delay: 1.2s;">
+      Scroll
+      <span class="hero__scroll-hint-line"></span>
+    </div>
+  </section>
+
+  <!-- ───── TICKER ───── -->
+  <section class="ticker">
+    <div class="ticker__track">
+      <span>Web Development</span><span class="sep">✦</span>
+      <em>iOS &amp; Android Apps</em><span class="sep">✦</span>
+      <span>Creative Designs</span><span class="sep">✦</span>
+      <em>Automate Everything</em><span class="sep">✦</span>
+      <span>AI Prompt Engineering</span><span class="sep">✦</span>
+    </div>
+  </section>
+
+  <!-- ───── NEEDS PICKER ───── -->
+  <section class="needs" id="services">
+    <div class="container">
+      <div class="needs__head">
+        <div>
+          <p class="eyebrow eyebrow--dot r-up" style="margin-bottom: 24px;">What do you need?</p>
+          <h2 class="needs__title r-up">Tell us where<br/>it <span class="accent">hurts.</span></h2>
+        </div>
+        <div class="needs__helper r-up">
+          <p>Pick one or many. We reply within <strong>24 hours</strong> with a plan — or the honest truth if we're not the right fit. <strong>No ghosting, no vapor quotes.</strong></p>
+          <p style="margin-top: 16px;">Can't find your need in the list? Hit "Something else" and tell us — we say yes to 100% of good briefs.</p>
+        </div>
+      </div>
+
+      <div class="needs__chips r-up">
+        <button class="chip" data-need="web" data-label="Website">
+          <span class="chip__mark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          A new website
+        </button>
+        <button class="chip" data-need="app" data-label="iOS/Android app">
+          <span class="chip__mark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          iOS / Android app
+        </button>
+        <button class="chip" data-need="ads" data-label="Ad creatives">
+          <span class="chip__mark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Meta &amp; Google ad creatives
+        </button>
+        <button class="chip" data-need="motion" data-label="Motion design">
+          <span class="chip__mark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Special animation / motion design
+        </button>
+        <button class="chip" data-need="full" data-label="Full marketing system">
+          <span class="chip__mark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Full marketing system
+        </button>
+        <button class="chip" data-need="course" data-label="AI course">
+          <span class="chip__mark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          AI prompt engineering course
+        </button>
+        <button class="chip" data-need="else" data-label="Something else">
+          <span class="chip__mark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Something else — tell us
+        </button>
+      </div>
+
+      <div class="needs__footer">
+        <div class="needs__summary">
+          <span class="needs__summary-label">Your selection</span>
+          <span class="needs__summary-value">Nothing selected yet — pick one or many.</span>
+        </div>
+        <button class="needs__submit">
+          Get a 100% yes
+          <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 100% YES ───── -->
+  <section class="yes">
+    <div class="container">
+      <span class="yes__eyebrow r-in">Our promise</span>
+      <h2 class="yes__title r-up">We say <span style="color: hsl(0 0% 4%);">yes</span> to 100%<br/>of good briefs.</h2>
+      <div class="yes__body">
+        <p class="r-up">If we can do it, we'll scope it — clearly, in writing, within 24 hours. Fixed price, fixed timeline, zero mystery fees.</p>
+        <p class="r-up">If we can't, we'll say so straight — and line up someone from our vetted network who can. Either way, you walk away with a real answer.</p>
+      </div>
+      <div class="yes__stats">
+        <div class="yes__stat r-up"><div class="yes__stat-num"><span data-count="24" data-suffix="h">0</span></div><div class="yes__stat-label">Reply guarantee</div></div>
+        <div class="yes__stat r-up"><div class="yes__stat-num"><span data-count="100" data-suffix="%">0</span></div><div class="yes__stat-label">Fixed-scope briefs</div></div>
+        <div class="yes__stat r-up"><div class="yes__stat-num"><span data-count="0" data-suffix="">0</span></div><div class="yes__stat-label">Ghosted founders, ever</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── SERVICES (pinned, Apple-style) ───── -->
+  <section class="services-pin">
+    <div class="services-pin__sticky">
+      <div class="services-pin__left">
+        <div>
+          <p class="eyebrow" style="color: hsl(var(--muted-foreground));">Services / 01 — 04</p>
+          <div class="services-pin__counter" style="margin-top: 28px;">
+            <span class="services-pin__counter-current">01</span>
+            <span class="services-pin__counter-total">/ 04</span>
+          </div>
+        </div>
+
+        <div class="services-pin__slides">
+          <div class="services-pin__slide active">
+            <span class="mono">01 — Web</span>
+            <h3>Websites, <span class="accent">engineered</span>.</h3>
+            <p>Fully functional, conversion-focused sites. Next.js, Framer or Webflow — whichever ships the right thing the fastest. Core Web Vitals, SEO and measurable lift baked in.</p>
+            <div class="services-pin__tags">
+              <span>Next.js</span><span>Framer</span><span>Webflow</span><span>Shopify</span><span>GSAP</span>
+            </div>
+          </div>
+          <div class="services-pin__slide">
+            <span class="mono">02 — Apps</span>
+            <h3>iOS &amp; Android, <span class="accent">native</span>-grade.</h3>
+            <p>MVP to App Store in weeks. Swift, Kotlin or React Native — with CI/CD, crash analytics, and a release cadence that doesn't stall. Ready for scale on day one.</p>
+            <div class="services-pin__tags">
+              <span>Swift</span><span>Kotlin</span><span>React Native</span><span>Expo</span><span>Firebase</span>
+            </div>
+          </div>
+          <div class="services-pin__slide">
+            <span class="mono">03 — Creative</span>
+            <h3>Designs that <span class="accent">convert</span>.</h3>
+            <p>Ad creatives, brand systems, social assets and motion reels — static, UGC and animated. Built for Meta, Google, TikTok and YouTube feeds. We produce, test and scale the winners.</p>
+            <div class="services-pin__tags">
+              <span>Meta Ads</span><span>Google Ads</span><span>UGC</span><span>Brand</span><span>Motion</span><span>Lottie</span>
+            </div>
+          </div>
+          <div class="services-pin__slide">
+            <span class="mono">04 — Automate Everything</span>
+            <h3>Automate <span class="accent">everything</span>.</h3>
+            <p>Excel, Sheets, office tasks, data pipelines, CRM, invoices, inbox, reports — if it's repetitive, it's gone. Tell us the most boring part of your week. We'll build the tool that does it while you sleep.</p>
+            <div class="services-pin__tags">
+              <span>Excel / Sheets</span><span>n8n</span><span>Zapier</span><span>Python</span><span>Apps Script</span><span>AI agents</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="services-pin__progress">
+            <div class="services-pin__progress-bar active"></div>
+            <div class="services-pin__progress-bar"></div>
+            <div class="services-pin__progress-bar"></div>
+            <div class="services-pin__progress-bar"></div>
+          </div>
+          <a href="services.html" class="btn btn--ghost" style="margin-top: 28px;">
+            Explore all services
+            <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="services-pin__right">
+        <div class="services-pin__visual v-web active">
+          <div class="v-web__frame">
+            <div class="v-web__bar"><span class="v-web__dot"></span><span class="v-web__dot"></span><span class="v-web__dot"></span></div>
+            <div class="v-web__body">
+              <div class="v-web__hero"></div>
+              <div class="v-web__pill w1"></div>
+              <div class="v-web__pill w2"></div>
+              <div class="v-web__grid"><div class="v-web__card"></div><div class="v-web__card"></div><div class="v-web__card"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="services-pin__visual v-app">
+          <div class="v-app__phone">
+            <div class="v-app__notch"></div>
+            <div class="v-app__screen">
+              <div class="v-app__pill w1"></div>
+              <div class="v-app__pill w2"></div>
+              <div class="v-app__card"></div>
+              <div class="v-app__grid"><div class="v-app__tile"></div><div class="v-app__tile"></div><div class="v-app__tile"></div><div class="v-app__tile"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="services-pin__visual v-ads">
+          <div class="v-ads__stack">
+            <div class="v-ads__ad"><span class="v-ads__ad-tag">Meta / Static</span><div class="v-ads__ad-title">Summer<br/>Launch</div><span class="v-ads__ad-cta">Shop</span></div>
+            <div class="v-ads__ad"><span class="v-ads__ad-tag">Google / UGC</span><div class="v-ads__ad-title">New<br/>Arrivals</div><span class="v-ads__ad-cta">Buy Now</span></div>
+            <div class="v-ads__ad"><span class="v-ads__ad-tag">Meta / Motion</span><div class="v-ads__ad-title">Fall<br/>Drop</div><span class="v-ads__ad-cta">Get Yours</span></div>
+          </div>
+        </div>
+        <div class="services-pin__visual v-motion">
+          <div class="v-auto">
+            <div class="v-auto__row"><span class="v-auto__cell h">A</span><span class="v-auto__cell h">B</span><span class="v-auto__cell h">C</span><span class="v-auto__cell h">D</span></div>
+            <div class="v-auto__row"><span class="v-auto__cell"></span><span class="v-auto__cell"></span><span class="v-auto__cell g"></span><span class="v-auto__cell"></span></div>
+            <div class="v-auto__row"><span class="v-auto__cell"></span><span class="v-auto__cell g"></span><span class="v-auto__cell"></span><span class="v-auto__cell"></span></div>
+            <div class="v-auto__row"><span class="v-auto__cell g"></span><span class="v-auto__cell"></span><span class="v-auto__cell"></span><span class="v-auto__cell g"></span></div>
+            <div class="v-auto__arrow">→</div>
+            <div class="v-auto__bot">⚙</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── NEW STUDIO HONEST PROMISE ───── -->
+  <section class="section">
+    <div class="container">
+      <div class="work__head">
+        <div>
+          <p class="eyebrow r-in" style="margin-bottom: 20px;">Real talk</p>
+          <h2 class="work__title r-up">We're <span class="accent">new</span>.<br/>That's our edge.</h2>
+        </div>
+      </div>
+      <div class="new-promise">
+        <div class="new-promise__lead r-up">
+          <p class="new-promise__hook">We don't have past stories to flex — <strong>we'd rather build yours.</strong></p>
+          <p>No decade-long case studies. No overpriced "strategy decks." No bloated retainers inherited from the last agency cycle.</p>
+          <p>What you get instead: <strong>founders in the room</strong> on every call, fresh tools, fresh eyes, and a hunger to make your project the reference we point to for the next hundred.</p>
+        </div>
+        <div class="new-promise__points">
+          <div class="new-promise__point r-up"><span class="new-promise__num">01</span><h4>100% genuine work</h4><p>Every pixel, every line of code, every ad — built by us. No white-label, no offshore flip, no "we'll find someone."</p></div>
+          <div class="new-promise__point r-up"><span class="new-promise__num">02</span><h4>Founding-client pricing</h4><p>The first cohort of clients gets our best rate, forever. Lock in now — you'll thank yourself in a year.</p></div>
+          <div class="new-promise__point r-up"><span class="new-promise__num">03</span><h4>Obsessive over outcomes</h4><p>We're not measured by portfolio size. We're measured by whether your thing works — conversions, installs, revenue, time saved.</p></div>
+          <div class="new-promise__point r-up"><span class="new-promise__num">04</span><h4>Refund if we disappoint</h4><p>If the first milestone misses the mark and we can't fix it, you don't pay. That's our risk to carry, not yours.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── PROCESS ───── -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow r-in" style="margin-bottom: 20px;">How we work</p>
+      <h2 class="work__title r-up">A process as<br/><span class="accent">tight</span> as the work.</h2>
+      <div class="process">
+        <div class="process__step r-up">
+          <div><div class="process__step-num">STEP 01</div><h4>Discover</h4></div>
+          <p>45-min call, audit &amp; a scoped proposal. Fixed deliverables, timeline, price.</p>
+        </div>
+        <div class="process__step r-up">
+          <div><div class="process__step-num">STEP 02</div><h4>Design</h4></div>
+          <p>Moodboards, wireframes, high-fidelity Figma. Two rounds, one shared doc, zero ambiguity.</p>
+        </div>
+        <div class="process__step r-up">
+          <div><div class="process__step-num">STEP 03</div><h4>Build</h4></div>
+          <p>Weekly demos, Linear for issues, Slack for chat. You always know what's next.</p>
+        </div>
+        <div class="process__step r-up">
+          <div><div class="process__step-num">STEP 04</div><h4>Launch</h4></div>
+          <p>Staging → production with monitoring. Handover videos and a 30-day bug warranty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── STATS ───── -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="stats">
+        <div class="stat r-up">
+          <div class="stat__num"><span data-count="100" data-suffix="%">0</span></div>
+          <div class="stat__label">Genuine, in-house work</div>
+        </div>
+        <div class="stat r-up">
+          <div class="stat__num"><span data-count="24" data-suffix="h">0</span></div>
+          <div class="stat__label">Reply guarantee</div>
+        </div>
+        <div class="stat r-up">
+          <div class="stat__num"><span data-count="0" data-suffix="">0</span></div>
+          <div class="stat__label">Hidden fees, ever</div>
+        </div>
+        <div class="stat r-up">
+          <div class="stat__num"><span data-count="1" data-suffix="">0</span></div>
+          <div class="stat__label">Founding cohort open now</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───── ACADEMY (separate) ───── -->
+  <section class="academy">
+    <div class="container">
+      <div class="academy__grid">
+        <div>
+          <div class="academy__kicker r-in">Nuvexa Academy · Separate from studio</div>
+          <h2 class="academy__title r-up">And when you want to learn <span class="accent">AI</span> yourself…</h2>
+          <p class="academy__desc r-up">
+            The Nuvexa Academy is a standalone 6-week cohort course — live sessions, 40+ labs, and permanent community. Master Claude, ChatGPT, Gemini, Midjourney, Runway and every major AI tool. Taught by the same team that ships our client work.
+          </p>
+          <div class="academy__actions r-up">
+            <a href="courses.html" class="btn btn--primary">
+              Explore the Academy
+              <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="courses.html#curriculum" class="btn btn--ghost">View syllabus</a>
+          </div>
+        </div>
+        <div class="academy__visual r-up">
+          <div class="academy__tools">
+            <span>Claude</span><span>ChatGPT</span><span>Gemini</span>
+            <span>Midjourney</span><span>Runway</span><span>Sora</span>
+            <span>Perplexity</span><span>Cursor</span><span>n8n</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── FOOTER ───── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__huge">Let's<br/>make<br/>something <span class="accent">move.</span></div>
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="nav__brand"><span class="nav__brand-mark"></span>NUVEXA</a>
+          <p class="footer__about">A motion-first marketing studio building the web, mobile, ads and AI literacy for ambitious brands.</p>
+        </div>
+        <div class="footer__col"><h4>Studio</h4><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer__col"><h4>Services</h4><ul><li><a href="services.html">Web development</a></li><li><a href="services.html">iOS / Android apps</a></li><li><a href="services.html">Creative designs</a></li><li><a href="services.html">Automate Everything</a></li><li><a href="courses.html">AI Academy</a></li></ul></div>
+        <div class="footer__col"><h4>Connect</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Dribbble</a></li><li><a href="#">X / Twitter</a></li></ul></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year></span> NUVEXA · Threebros Media Pvt Ltd</span>
+        <span>Gurgaon → Worldwide</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Spline viewer (eager) -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
+  <!-- GSAP + Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);</script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
