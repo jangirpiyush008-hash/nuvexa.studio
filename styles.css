@@ -450,6 +450,10 @@ ul { list-style: none; }
   width: 100%;
   height: 100%;
   display: block;
+  /* Crop the Spline scene's empty top void so bricks touch the very top
+     edge behind the transparent nav. Cover-style fill. */
+  transform: scale(1.25) translateY(6%);
+  transform-origin: center center;
 }
 .hero__3d {
   position: absolute;
@@ -2358,10 +2362,17 @@ h1, h2, h3, h4, h5, h6,
   50%      { transform: rotate(180deg) scale(1.25); opacity: 0.85; }
 }
 
-/* Hero on mobile: keep Spline at its native size (no forced scale) */
+/* Hero on mobile: slightly larger crop so the brick wall still fills
+   the top of the viewport on phones */
 @media (max-width: 900px) {
-  .hero__fallback {
-    background: hsl(var(--hero-bg));
+  .hero__spline spline-viewer {
+    transform: scale(1.4) translateY(8%) !important;
+  }
+  .hero__fallback { background: hsl(var(--hero-bg)); }
+}
+@media (max-width: 560px) {
+  .hero__spline spline-viewer {
+    transform: scale(1.55) translateY(10%) !important;
   }
 }
 
