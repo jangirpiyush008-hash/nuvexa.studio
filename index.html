@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nuvexa — We build brands correctly</title>
   <meta name="description" content="Websites, apps, ad creatives and AI cohorts. Engineered with motion, shipped with precision." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1A1A'/><rect x='11' y='11' width='10' height='10' rx='2' fill='%2322F000'/></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1A1A'/><rect x='11' y='11' width='10' height='10' rx='2' fill='%23A855F7'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -48,22 +50,17 @@
 
   <!-- ───── HERO ───── -->
   <section class="hero">
-    <div class="hero__spline" id="heroSpline">
-      <div class="hero__fallback"></div>
-      <spline-viewer
-        class="hero__3d"
-        loading-anim-type="none"
-        url="https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode"
-      ></spline-viewer>
-    </div>
-    <div class="hero__dark-overlay"></div>
+    <video class="hero__video" id="heroVideo" muted playsinline preload="auto" aria-hidden="true">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4" type="video/mp4">
+    </video>
+    <div class="hero__blur" aria-hidden="true"></div>
 
     <div class="hero__content">
       <h1 class="hero__title animate-fade-up" style="animation-delay: 0.2s;">
-        NUVEXA<br/><span class="accent">STUDIO</span>
+        Nuvexa <span class="hero__grad">Studio</span>
       </h1>
       <p class="hero__sub animate-fade-up" style="animation-delay: 0.4s;">
-        No past stories.<br/>Let's build <span class="accent">yours.</span>
+        No past stories.<br/>Let's build yours.
       </p>
       <p class="hero__desc animate-fade-up" style="animation-delay: 0.55s;">
         Websites that <strong>convert.</strong> Apps that <strong>ship.</strong> Creatives that <strong>stop the scroll.</strong> And we'll <strong>automate everything</strong> boring in your workflow — Excel, office tasks, data, anything you throw at us.
@@ -83,11 +80,54 @@
       </p>
     </div>
 
-    <div class="hero__scroll-hint animate-fade-in" style="animation-delay: 1.2s;">
-      Scroll
-      <span class="hero__scroll-hint-line"></span>
+    <!-- Brand marquee at the bottom of the hero -->
+    <div class="hero__marquee animate-fade-in" style="animation-delay: 1s;">
+      <div class="hero__marquee-row">
+        <p class="hero__marquee-label">Relied on by brands<br/>across the globe</p>
+        <div class="hero__marquee-track">
+          <div class="hero__marquee-inner">
+            <span class="brand-chip"><span class="brand-chip__icon liquid-glass">V</span>Vortex</span>
+            <span class="brand-chip"><span class="brand-chip__icon liquid-glass">N</span>Nimbus</span>
+            <span class="brand-chip"><span class="brand-chip__icon liquid-glass">P</span>Prysma</span>
+            <span class="brand-chip"><span class="brand-chip__icon liquid-glass">C</span>Cirrus</span>
+            <span class="brand-chip"><span class="brand-chip__icon liquid-glass">K</span>Kynder</span>
+            <span class="brand-chip"><span class="brand-chip__icon liquid-glass">H</span>Halcyn</span>
+            <!-- duplicated for seamless loop -->
+            <span class="brand-chip" aria-hidden="true"><span class="brand-chip__icon liquid-glass">V</span>Vortex</span>
+            <span class="brand-chip" aria-hidden="true"><span class="brand-chip__icon liquid-glass">N</span>Nimbus</span>
+            <span class="brand-chip" aria-hidden="true"><span class="brand-chip__icon liquid-glass">P</span>Prysma</span>
+            <span class="brand-chip" aria-hidden="true"><span class="brand-chip__icon liquid-glass">C</span>Cirrus</span>
+            <span class="brand-chip" aria-hidden="true"><span class="brand-chip__icon liquid-glass">K</span>Kynder</span>
+            <span class="brand-chip" aria-hidden="true"><span class="brand-chip__icon liquid-glass">H</span>Halcyn</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Video fade-loop controller -->
+  <script>
+    (function(){
+      var v = document.getElementById('heroVideo');
+      if (!v) return;
+      var FADE = 500; // ms
+      function setOpacity(o){ v.style.opacity = o; }
+      function tick(){
+        if (!v.duration || isNaN(v.duration)) { requestAnimationFrame(tick); return; }
+        var t = v.currentTime, d = v.duration;
+        if (t < FADE/1000) setOpacity(Math.min(1, t/(FADE/1000)));
+        else if (t > d - FADE/1000) setOpacity(Math.max(0, (d - t)/(FADE/1000)));
+        else setOpacity(1);
+        requestAnimationFrame(tick);
+      }
+      v.addEventListener('ended', function(){
+        setOpacity(0);
+        setTimeout(function(){ v.currentTime = 0; v.play().catch(function(){}); }, 100);
+      });
+      v.play().catch(function(){}); // autoplay (muted)
+      requestAnimationFrame(tick);
+    })();
+  </script>
 
   <!-- ───── TICKER ───── -->
   <section class="ticker">
@@ -432,8 +472,6 @@
     </div>
   </footer>
 
-  <!-- Spline viewer (eager) -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
   <!-- GSAP + Lenis -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
