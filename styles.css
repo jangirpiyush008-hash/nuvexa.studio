@@ -2361,3 +2361,57 @@ h1, h2, h3, h4, h5, h6,
   0%, 100% { transform: rotate(0deg) scale(1); opacity: 1; }
   50%      { transform: rotate(180deg) scale(1.25); opacity: 0.85; }
 }
+
+/* === Mobile: fill the hero top with bricks (no black band above) === */
+@media (max-width: 900px) {
+  .hero__spline spline-viewer {
+    transform: scale(1.7) translateY(8%) !important;
+    transform-origin: center 40%;
+  }
+  .hero__fallback {
+    background: radial-gradient(ellipse at center top, hsl(0 0% 10%), hsl(var(--hero-bg)) 60%);
+  }
+}
+@media (max-width: 560px) {
+  .hero__spline spline-viewer {
+    transform: scale(2.1) translateY(12%) !important;
+  }
+}
+
+/* === Mobile: un-pin the services showcase so slides don't overlap === */
+@media (max-width: 900px) {
+  .services-pin { position: relative; height: auto; }
+  .services-pin__sticky {
+    position: static !important;
+    height: auto !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .services-pin__left {
+    padding: 56px 24px !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+  .services-pin__counter,
+  .services-pin__progress { display: none !important; }
+  .services-pin__slides {
+    display: block !important;
+    position: static !important;
+    margin: 24px 0 !important;
+    flex: unset !important;
+  }
+  .services-pin__slide {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    padding: 32px 0 !important;
+    border-bottom: 1px solid hsla(0 0% 100% / 0.08) !important;
+  }
+  .services-pin__slide:last-child { border-bottom: none !important; }
+  .services-pin__slide h3 {
+    font-size: clamp(32px, 9vw, 52px) !important;
+    line-height: 1.02 !important;
+  }
+  .services-pin__right { display: none !important; } /* hide abstract visuals to prevent overlap */
+}
