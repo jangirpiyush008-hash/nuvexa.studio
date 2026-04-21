@@ -1,0 +1,12 @@
+{
+  "name": "nuvexa-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nuvexa Studio landing site",
+  "scripts": {
+    "start": "serve -s . -l $PORT --no-clipboard"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
