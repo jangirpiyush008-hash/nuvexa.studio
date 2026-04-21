@@ -21,7 +21,7 @@
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contacts</a>
+      <a href="contact.html" class="active">Contact</a>
     </div>
     <div class="nav__right">
       <a href="courses.html" class="nav__academy">Academy</a>
@@ -31,7 +31,7 @@
   </nav>
 
   <div class="mobile-menu">
-    <a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contacts</a><a href="courses.html">Academy →</a>
+    <a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="courses.html">Academy →</a>
   </div>
 
   <section class="page-header">
@@ -48,7 +48,7 @@
         <form class="form r-up" id="briefForm" onsubmit="return submitBrief(event)">
           <div class="form__row">
             <label>Name<input type="text" name="name" placeholder="Full name" required></label>
-            <label>Email<input type="email" name="email" placeholder="you@company.com" required></label>
+            <label>Email<input type="email" name="email" placeholder="you@company.com" required pattern="^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" title="Enter a real email like you@company.com"></label>
           </div>
           <label>Company <span class="form__optional">optional</span><input type="text" name="company" placeholder="Company / brand"></label>
           <label>What do you need?
@@ -78,7 +78,7 @@
             Send brief
             <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <p class="form__note">By sending you agree to our friendly non-spam policy. We reply within 24 hours, weekdays.</p>
+          <p class="form__note">Real emails only — we reply within 24 hours on weekdays. By sending, you agree to our friendly non-spam policy.</p>
         </form>
 
         <aside class="contact__aside r-up">
@@ -134,12 +134,53 @@
       const ta = document.querySelector('textarea[name="brief"]');
       if (ta && needs) ta.value = `From picker: ${needs.replace(/,/g, ', ')}\n\n`;
     })();
+    // Block disposable / throwaway / obviously fake emails
+    const DISPOSABLE_DOMAINS = new Set([
+      'mailinator.com','tempmail.com','temp-mail.org','10minutemail.com','guerrillamail.com',
+      'yopmail.com','trashmail.com','throwawaymail.com','maildrop.cc','fakeinbox.com',
+      'getnada.com','dispostable.com','sharklasers.com','mailnesia.com','mintemail.com',
+      'tempinbox.com','mytemp.email','tempmailo.com','emailondeck.com','tempail.com',
+      'spam4.me','grr.la','temp-mail.ru','discard.email','mvrht.com','inboxkitten.com',
+      'test.com','example.com','example.org','email.com','domain.com','fake.com','test.test',
+      'asdf.com','abc.com','xyz.com','123.com','aaa.com','qwerty.com'
+    ]);
+    function isRealEmail(email) {
+      if (!email || typeof email !== 'string') return false;
+      const e = email.trim().toLowerCase();
+      // Strict RFC-like shape
+      const re = /^[a-z0-9._%+\-]+@([a-z0-9][a-z0-9\-]*\.)+[a-z]{2,}$/;
+      if (!re.test(e)) return false;
+      const [local, domain] = e.split('@');
+      // No consecutive dots, no leading/trailing dots in local or domain
+      if (/\.{2,}/.test(e) || local.startsWith('.') || local.endsWith('.')) return false;
+      if (domain.startsWith('-') || domain.endsWith('-')) return false;
+      // Block disposables
+      if (DISPOSABLE_DOMAINS.has(domain)) return false;
+      // Block obvious garbage local parts ("asdf", "test", "aaa", single chars)
+      if (/^(test|asdf|qwerty|aaa+|abc+|xxx+|yyy+|zzz+|1234|noone|none|null|void|random)$/.test(local)) return false;
+      if (local.length < 2) return false;
+      return true;
+    }
+
     async function submitBrief(e) {
       e.preventDefault();
       const form = e.target;
       const btn = form.querySelector('button[type=submit]');
       const note = form.querySelector('.form__note');
+      const emailInput = form.querySelector('input[name="email"]');
       const original = btn.innerHTML;
+
+      const emailVal = emailInput ? emailInput.value : '';
+      if (!isRealEmail(emailVal)) {
+        if (note) note.textContent = "Please enter a real work email (we reply there within 24 hours).";
+        if (emailInput) {
+          emailInput.setCustomValidity('Please enter a real email address.');
+          emailInput.reportValidity();
+          emailInput.addEventListener('input', () => emailInput.setCustomValidity(''), { once: true });
+        }
+        return false;
+      }
+
       btn.disabled = true;
       btn.textContent = 'Sending…';
 
