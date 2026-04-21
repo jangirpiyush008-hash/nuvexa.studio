@@ -4,9 +4,9 @@
   "private": true,
   "description": "Nuvexa Studio landing site",
   "scripts": {
-    "start": "serve . --no-clipboard --no-request-logging"
+    "start": "node server.js"
   },
-  "dependencies": {
-    "serve": "^14.2.4"
+  "engines": {
+    "node": ">=18"
   }
 }
