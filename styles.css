@@ -450,10 +450,6 @@ ul { list-style: none; }
   width: 100%;
   height: 100%;
   display: block;
-  /* Scale + shift up so the 3D bricks fill the very top of the viewport,
-     eliminating the dark empty band above them behind the nav. */
-  transform: scale(1.22) translateY(4%);
-  transform-origin: center center;
 }
 .hero__3d {
   position: absolute;
@@ -2362,19 +2358,10 @@ h1, h2, h3, h4, h5, h6,
   50%      { transform: rotate(180deg) scale(1.25); opacity: 0.85; }
 }
 
-/* === Mobile: fill the hero top with bricks (no black band above) === */
+/* Hero on mobile: keep Spline at its native size (no forced scale) */
 @media (max-width: 900px) {
-  .hero__spline spline-viewer {
-    transform: scale(1.7) translateY(8%) !important;
-    transform-origin: center 40%;
-  }
   .hero__fallback {
-    background: radial-gradient(ellipse at center top, hsl(0 0% 10%), hsl(var(--hero-bg)) 60%);
-  }
-}
-@media (max-width: 560px) {
-  .hero__spline spline-viewer {
-    transform: scale(2.1) translateY(12%) !important;
+    background: hsl(var(--hero-bg));
   }
 }
 
