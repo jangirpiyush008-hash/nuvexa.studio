@@ -134,14 +134,51 @@
       const ta = document.querySelector('textarea[name="brief"]');
       if (ta && needs) ta.value = `From picker: ${needs.replace(/,/g, ', ')}\n\n`;
     })();
-    function submitBrief(e) {
+    async function submitBrief(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type=submit]');
-      btn.textContent = 'Sent — we\'ll reply within 24 hours';
-      btn.classList.add('active');
+      const form = e.target;
+      const btn = form.querySelector('button[type=submit]');
+      const note = form.querySelector('.form__note');
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      const fd = new FormData(form);
+      const params = new URLSearchParams(window.location.search);
+      const needs = params.get('needs');
+
+      const payload = {
+        name: fd.get('name'),
+        email: fd.get('email'),
+        company: fd.get('company') || null,
+        need: fd.get('need'),
+        budget: fd.get('budget'),
+        brief: fd.get('brief'),
+        picker_needs: needs || null,
+        page: 'contact',
+        user_agent: navigator.userAgent
+      };
+
+      try {
+        if (!window.nuvexaDB) throw new Error('Supabase client not loaded');
+        const { error } = await window.nuvexaDB.from('leads').insert(payload);
+        if (error) throw error;
+        btn.textContent = "Sent — we'll reply within 24 hours";
+        btn.classList.add('active');
+        form.reset();
+        if (note) note.textContent = 'Brief received. Check your inbox soon.';
+      } catch (err) {
+        console.error('[Supabase] submit error:', err);
+        btn.disabled = false;
+        btn.innerHTML = original;
+        if (note) note.textContent = "Couldn't send — please email hello@nuvexa.studio directly.";
+      }
       return false;
     }
   </script>
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="supabase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);</script>
