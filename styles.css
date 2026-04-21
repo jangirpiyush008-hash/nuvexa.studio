@@ -1878,7 +1878,7 @@ ul { list-style: none; }
 .contact__social a { color: hsl(var(--foreground)); text-decoration: none; }
 .contact__social a:hover { color: hsl(var(--primary)); }
 
-/* Global heading highlight — stronger presence for all major titles */
+/* Global heading — subtle highlight only, no dark halo */
 .page-header__title,
 .work__title,
 .footer__huge,
@@ -1886,17 +1886,12 @@ ul { list-style: none; }
 .needs__title,
 .academy__title,
 .origin__title {
-  text-shadow:
-    0 1px 28px hsla(0 0% 0% / 0.6),
-    0 0 1px hsla(0 0% 100% / 0.08);
+  text-shadow: none;
 }
 .accent {
   position: relative;
   color: hsl(var(--primary));
-  text-shadow:
-    0 0 16px hsla(119 99% 46% / 0.55),
-    0 0 32px hsla(119 99% 46% / 0.32),
-    0 0 72px hsla(119 99% 46% / 0.18);
+  text-shadow: 0 0 12px hsla(119 99% 46% / 0.22);
 }
 /* Bold under-shimmer on accent spans in major headings */
 .page-header__title .accent::after,
@@ -2067,21 +2062,18 @@ ul { list-style: none; }
   margin-top: 2px;
 }
 
-/* === Bolder headings globally + mobile polish === */
+/* === Slightly bolder headings, themed (no black halo) === */
 h1, h2, h3, h4, h5, h6,
 .hero__title, .page-header__title, .work__title, .needs__title,
 .academy__title, .footer__huge, .origin__title, .svc-detail__title {
-  font-weight: 800 !important;
+  font-weight: 700;
   letter-spacing: -0.025em;
-}
-.hero__title, .page-header__title, .work__title, .footer__huge, .needs__title, .academy__title {
-  font-weight: 800 !important;
 }
 .team-creative__card h4, .process__step h4, .new-promise__point h4,
 .pricing-card h3, .module__title, .footer__col h4, .value h4, .team-card h4 {
-  font-weight: 700 !important;
+  font-weight: 600;
 }
-.accent { font-weight: 800 !important; }
+.accent { font-weight: 700; }
 
 /* === Mobile polish === */
 @media (max-width: 700px) {
