@@ -158,7 +158,13 @@ ul { list-style: none; }
   mix-blend-mode: difference;
   transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), background 0.2s ease;
 }
-.cursor.hover { width: 64px; height: 64px; background: hsl(var(--primary)); mix-blend-mode: normal; box-shadow: 0 0 40px hsla(119 99% 46% / 0.5); }
+.cursor.hover {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 1.5px solid hsl(var(--primary));
+  box-shadow: 0 0 18px hsla(119 99% 46% / 0.45), inset 0 0 8px hsla(119 99% 46% / 0.25);
+  mix-blend-mode: normal;
+}
 @media (hover: none), (max-width: 900px) { .cursor { display: none; } }
 
 /* ───────────── NAVIGATION ───────────── */
@@ -1872,36 +1878,63 @@ ul { list-style: none; }
 .contact__social a { color: hsl(var(--foreground)); text-decoration: none; }
 .contact__social a:hover { color: hsl(var(--primary)); }
 
-/* Global heading highlight — soft glow on .accent spans + subtle text-shadow on big titles */
+/* Global heading highlight — stronger presence for all major titles */
 .page-header__title,
 .work__title,
 .footer__huge,
 .hero__title,
 .needs__title,
-.academy__title {
-  text-shadow: 0 1px 24px hsla(0 0% 0% / 0.55);
+.academy__title,
+.origin__title {
+  text-shadow:
+    0 1px 28px hsla(0 0% 0% / 0.6),
+    0 0 1px hsla(0 0% 100% / 0.08);
 }
 .accent {
   position: relative;
   color: hsl(var(--primary));
-  text-shadow: 0 0 22px hsla(119 99% 46% / 0.35), 0 0 60px hsla(119 99% 46% / 0.18);
+  text-shadow:
+    0 0 16px hsla(119 99% 46% / 0.55),
+    0 0 32px hsla(119 99% 46% / 0.32),
+    0 0 72px hsla(119 99% 46% / 0.18);
 }
+/* Bold under-shimmer on accent spans in major headings */
 .page-header__title .accent::after,
 .work__title .accent::after,
 .footer__huge .accent::after,
-.hero__title .accent::after {
+.hero__title .accent::after,
+.origin__title .accent::after,
+.needs__title .accent::after,
+.academy__title .accent::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: 0.06em;
-  height: 0.08em;
-  background: linear-gradient(90deg, transparent, hsla(119 99% 46% / 0.55), transparent);
+  left: -2%; right: -2%; bottom: 0.02em;
+  height: 0.11em;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)) 20%, hsl(var(--primary)) 80%, transparent);
   border-radius: 999px;
-  opacity: 0.8;
-  animation: accentShimmer 3.2s ease-in-out infinite;
+  opacity: 0.85;
+  filter: blur(0.5px);
+  box-shadow: 0 0 18px hsla(119 99% 46% / 0.65);
+  animation: accentShimmer 3s ease-in-out infinite;
 }
 @keyframes accentShimmer {
-  0%, 100% { opacity: 0.4; transform: scaleX(0.85); }
-  50% { opacity: 0.9; transform: scaleX(1.05); }
+  0%, 100% { opacity: 0.55; transform: scaleX(0.82); }
+  50% { opacity: 1; transform: scaleX(1.04); }
+}
+/* Smaller eyebrow/section headings get a soft pill-highlight */
+.eyebrow {
+  position: relative;
+  display: inline-block;
+  padding-left: 22px;
+}
+.eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  width: 14px; height: 1.5px;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 8px hsla(119 99% 46% / 0.7);
+  transform: translateY(-50%);
 }
 
 /* Origin story */
