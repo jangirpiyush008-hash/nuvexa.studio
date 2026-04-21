@@ -4,7 +4,7 @@
   "private": true,
   "description": "Nuvexa Studio landing site",
   "scripts": {
-    "start": "serve . -l $PORT --no-clipboard"
+    "start": "serve . --no-clipboard --no-request-logging"
   },
   "dependencies": {
     "serve": "^14.2.4"

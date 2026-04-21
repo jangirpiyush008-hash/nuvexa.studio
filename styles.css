@@ -2066,3 +2066,51 @@ ul { list-style: none; }
   color: hsl(var(--primary)); font-size: 11px; font-weight: 700;
   margin-top: 2px;
 }
+
+/* === Bolder headings globally + mobile polish === */
+h1, h2, h3, h4, h5, h6,
+.hero__title, .page-header__title, .work__title, .needs__title,
+.academy__title, .footer__huge, .origin__title, .svc-detail__title {
+  font-weight: 800 !important;
+  letter-spacing: -0.025em;
+}
+.hero__title, .page-header__title, .work__title, .footer__huge, .needs__title, .academy__title {
+  font-weight: 800 !important;
+}
+.team-creative__card h4, .process__step h4, .new-promise__point h4,
+.pricing-card h3, .module__title, .footer__col h4, .value h4, .team-card h4 {
+  font-weight: 700 !important;
+}
+.accent { font-weight: 800 !important; }
+
+/* === Mobile polish === */
+@media (max-width: 700px) {
+  .container { padding-left: 20px; padding-right: 20px; }
+  .hero__title { font-size: clamp(40px, 11vw, 64px) !important; line-height: 1.02; }
+  .page-header__title { font-size: clamp(36px, 10vw, 56px) !important; }
+  .page-header__title--xl { font-size: clamp(40px, 11vw, 64px) !important; }
+  .work__title, .needs__title, .academy__title, .origin__title { font-size: clamp(32px, 8.5vw, 48px) !important; }
+  .footer__huge { font-size: clamp(48px, 14vw, 96px) !important; }
+  .hero__sub, .page-header__sub { font-size: 16px !important; }
+  .nav__center, .nav__academy { display: none; }
+  .nav__cta { padding: 10px 16px !important; font-size: 13px !important; }
+  .hero__actions { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+  .section { padding: 72px 0 !important; }
+  .section--tight { padding: 48px 0 !important; }
+  .manifesto__track { font-size: 32px !important; }
+  .origin__pills { flex-wrap: wrap; gap: 8px; }
+  .team-creative { grid-template-columns: 1fr !important; }
+  .contact__big { font-size: 18px !important; word-break: break-all; }
+  .footer__grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 480px) {
+  .nav { padding: 14px 18px !important; }
+  .nav__brand { font-size: 14px !important; }
+  .btn { padding: 12px 20px !important; font-size: 13px !important; }
+}
+
+/* === Ensure all buttons and links are clickable === */
+.btn, a, button { cursor: pointer; }
+.hero__actions, .hero__actions .btn { pointer-events: auto !important; position: relative; z-index: 5; }
+.nav, .nav a, .nav__cta, .nav__academy { pointer-events: auto !important; position: relative; z-index: 100; }
