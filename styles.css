@@ -385,10 +385,9 @@ ul { list-style: none; }
   width: 100%;
   height: 100%;
   display: block;
-  /* Mild crop to remove the Spline scene's empty top sky, matching how
-     the scene appears in the reference (AKOR) render. Bricks visually
-     stay the same size, only the void is cropped. */
-  transform: scale(1.1) translateY(3%);
+  /* Crop the Spline scene's empty top sky so bricks reach the nav edge —
+     this is the original working value from the theme's first version. */
+  transform: scale(1.22) translateY(4%);
   transform-origin: center center;
 }
 .hero__3d {
