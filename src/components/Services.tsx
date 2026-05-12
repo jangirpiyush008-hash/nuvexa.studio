@@ -1,0 +1,146 @@
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import Backdrop3D from '@/components/Backdrop3D'
+import FlipDeck from '@/components/FlipDeck'
+import Magnet from '@/components/Magnet'
+import { services } from '@/content/services'
+
+export default function Services() {
+  const slides = [
+    ...services.map((s, i) => (
+      <ServiceSlide key={s.title} service={s} n={i + 1} totalServices={services.length} />
+    )),
+    <CtaSlide key="cta" />,
+  ]
+
+  return (
+    <main style={{ backgroundColor: '#0C0C0C', position: 'relative' }}>
+      <Backdrop3D />
+      <FlipDeck slides={slides} />
+    </main>
+  )
+}
+
+function ServiceSlide({
+  service,
+  n,
+  totalServices,
+}: {
+  service: typeof services[0]
+  n: number
+  totalServices: number
+}) {
+  return (
+    <div className="h-full w-full flex items-center px-6 md:px-14 pt-24 pb-12">
+      <div className="mx-auto w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12 items-center" style={{ maxWidth: 1500 }}>
+        <motion.div
+          className="md:col-span-2 glass glow-border spotlight-card rounded-3xl p-7 md:p-9"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ y: -4, rotateX: 1.5, rotateY: -1.5 }}
+          style={{ transformPerspective: 1000, transformStyle: 'preserve-3d' }}
+          onMouseMove={(e) => {
+            const r = e.currentTarget.getBoundingClientRect()
+            e.currentTarget.style.setProperty('--spot-x', `${e.clientX - r.left}px`)
+            e.currentTarget.style.setProperty('--spot-y', `${e.clientY - r.top}px`)
+          }}
+        >
+          <p
+            className="uppercase mb-6 font-medium"
+            style={{ color: '#BBCCD7', opacity: 0.7, letterSpacing: '0.3em', fontSize: '0.7rem' }}
+          >
+            {service.tag}  ·  {String(n).padStart(2, '0')} / {String(totalServices).padStart(2, '0')}
+          </p>
+          <p
+            className="font-light leading-snug mb-7"
+            style={{ color: '#D7E2EA', fontSize: 'clamp(1.15rem, 2vw, 1.75rem)' }}
+          >
+            {service.promise}
+          </p>
+          <ul className="space-y-2.5 mb-7">
+            {service.points.map((p) => (
+              <li
+                key={p}
+                className="flex gap-3 font-light"
+                style={{ color: '#D7E2EA', opacity: 0.75, fontSize: 'clamp(0.9rem, 1.2vw, 1.05rem)' }}
+              >
+                <span style={{ color: '#BBCCD7' }}>›</span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+          <div
+            className="inline-block px-5 py-2 uppercase tracking-widest"
+            style={{
+              border: '1px solid rgba(215,226,234,0.4)',
+              color: '#D7E2EA',
+              fontSize: '0.7rem',
+              borderRadius: 999,
+              background: 'rgba(255,255,255,0.04)',
+            }}
+          >
+            Delivered in {service.eta}
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="md:col-span-3 md:text-right"
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+        >
+          <h2
+            className="hero-heading-glow font-black uppercase tracking-tight leading-[0.88]"
+            style={{ fontSize: 'clamp(3rem, 8.5vw, 8.5rem)' }}
+          >
+            <span className="block whitespace-nowrap">{service.bigOne}</span>
+            <span className="block whitespace-nowrap">{service.bigTwo}</span>
+          </h2>
+          <p
+            className="uppercase mt-5"
+            style={{ color: '#D7E2EA', opacity: 0.7, letterSpacing: '0.15em', fontSize: 'clamp(0.85rem, 1.2vw, 1rem)' }}
+          >
+            {service.title}
+          </p>
+          <p
+            className="mt-2 italic font-light"
+            style={{ color: '#BBCCD7', opacity: 0.6, fontSize: '0.85rem' }}
+          >
+            "{service.caption}"
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
+function CtaSlide() {
+  return (
+    <div className="h-full w-full flex flex-col items-center justify-center px-5 text-center">
+      <p
+        className="uppercase mb-6"
+        style={{ color: '#BBCCD7', opacity: 0.6, letterSpacing: '0.4em', fontSize: '0.75rem' }}
+      >
+        Last stop
+      </p>
+      <h2
+        className="hero-heading-glow font-black uppercase tracking-tight leading-none mb-8"
+        style={{ fontSize: 'clamp(3rem, 11vw, 11rem)' }}
+      >
+        Ready to ship?
+      </h2>
+      <p
+        className="mx-auto max-w-2xl font-light mb-12"
+        style={{ color: '#D7E2EA', opacity: 0.7, fontSize: 'clamp(1rem, 1.7vw, 1.4rem)' }}
+      >
+        One paragraph. One brief. We come back inside 24 hours with scope, price, and a ship date.
+      </p>
+      <Magnet padding={120} strength={4}>
+        <Link to="/contact" className="contact-pill inline-block px-12 py-4 text-sm md:text-base">
+          Drop the Brief →
+        </Link>
+      </Magnet>
+    </div>
+  )
+}
